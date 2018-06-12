@@ -5,12 +5,15 @@ var RENDER_CLOUD_HEIGHT = 270;
 var RENDER_CLOUD_X = 100;
 var RENDER_CLOUD_Y = 10;
 var GAP = 25;
+var TITLE_INTENT = 10;
+var FONT_GAP = 20;
 var BAR_WIDTH = 40;
 var BAR_MAX_HEIGHT = 150;
 var INDENT = 90;
 var INDENT_NAME = 20;
 var INDENT_TIME = 10;
 var INDENT_TOP = 60;
+var SHADOW_SHIFT = 10;
 
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
@@ -38,13 +41,13 @@ var fillBarColor = function (ctx, namePlayer) {
 };
 
 window.renderStatistics = function (ctx, names, times) {
-  renderCloud(ctx, RENDER_CLOUD_X + 10, RENDER_CLOUD_Y + 10, 'rgba(0, 0, 0, 0.7)');
+  renderCloud(ctx, RENDER_CLOUD_X + SHADOW_SHIFT, RENDER_CLOUD_Y + SHADOW_SHIFT, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, RENDER_CLOUD_X, RENDER_CLOUD_Y, '#fff');
 
   ctx.fillStyle = '#000';
   ctx.font = '16px PT Mono';
-  ctx.fillText('Ура вы победили!', 120, 45);
-  ctx.fillText('Список результатов:', 120, 65);
+  ctx.fillText('Ура вы победили!', RENDER_CLOUD_X + GAP, RENDER_CLOUD_Y + GAP + TITLE_INTENT);
+  ctx.fillText('Список результатов:', RENDER_CLOUD_X + GAP, RENDER_CLOUD_Y + GAP + TITLE_INTENT + FONT_GAP);
 
   var maxTime = getMaxElement(times);
   var step = BAR_MAX_HEIGHT / maxTime;
