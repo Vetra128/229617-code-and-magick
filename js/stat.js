@@ -42,7 +42,7 @@ window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, RENDER_CLOUD_X, RENDER_CLOUD_Y, '#fff');
 
   ctx.fillStyle = '#000';
-  ctx.font = "16px PT Mono";
+  ctx.font = '16px PT Mono';
   ctx.fillText('Ура вы победили!', 120, 45);
   ctx.fillText('Список результатов:', 120, 65);
 
@@ -59,7 +59,6 @@ window.renderStatistics = function (ctx, names, times) {
 
     fillBarColor(ctx, names[i]);
     ctx.fillRect(getX, getY, BAR_WIDTH, barElemWidth);
-    console.log(getX, getY, BAR_WIDTH, barElemWidth);
     ctx.fillStyle = '#000';
     ctx.fillText(names[i], getX, initialY + INDENT_NAME);
     ctx.fillText(times[i].toFixed(0), getX, getY - INDENT_TIME);
