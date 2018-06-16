@@ -54,17 +54,17 @@ var randomInteger = function (min, max) {
 var createWizrdsArray = function () {
   var wizards = [];
 
-  for(var i = 0; i < WIZARD_COUNT; i++) {
+  for (var i = 0; i < WIZARD_COUNT; i++) {
     var wizard = {};
 
-    wizard.name = NAME_LIST[randomInteger(0, NAME_LIST.length-1)] + ' ' + SURNAME_LIST[randomInteger(0, SURNAME_LIST.length-1)];
-    wizard.coatColor = COLOR_LIST[randomInteger(0, COLOR_LIST.length-1)];
-    wizard.eyesColor = EYES_COLOR_LIST[randomInteger(0, EYES_COLOR_LIST.length-1)];
+    wizard.name = NAME_LIST[randomInteger(0, NAME_LIST.length - 1)] + ' ' + SURNAME_LIST[randomInteger(0, SURNAME_LIST.length - 1)];
+    wizard.coatColor = COLOR_LIST[randomInteger(0, COLOR_LIST.length - 1)];
+    wizard.eyesColor = EYES_COLOR_LIST[randomInteger(0, EYES_COLOR_LIST.length - 1)];
 
     wizards.push(wizard);
   }
 
-  return(wizards);
+  return (wizards);
 };
 
 var wizards = createWizrdsArray();
