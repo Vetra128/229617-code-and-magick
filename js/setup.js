@@ -42,8 +42,8 @@ var EYES_COLOR_LIST = [
   'green'
 ];
 
-var userDialog = document.querySelector('.setup');
-userDialog.classList.remove('hidden');
+var wizardOptionsDialog = document.querySelector('.setup');
+wizardOptionsDialog.classList.remove('hidden');
 
 var randomInteger = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -72,26 +72,30 @@ var createWizrdsArray = function () {
 
 var wizards = createWizrdsArray();
 
-var similarListElement = userDialog.querySelector('.setup-similar-list');
+var similarListElement = wizardOptionsDialog.querySelector('.setup-similar-list');
 
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .content
   .querySelector('.setup-similar-item');
 
-var renderWizard = function (wizard) {
-  var wizardElement = similarWizardTemplate.cloneNode(true);
+var createWizard = function (wizard) {
+  var createdWizard = similarWizardTemplate.cloneNode(true);
 
-  wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
-  wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
-  wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
+  createdWizard.querySelector('.setup-similar-label').textContent = wizard.name;
+  createdWizard.querySelector('.wizard-coat').style.fill = wizard.coatColor;
+  createdWizard.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
 
-  return wizardElement;
+  return createdWizard;
 };
 
-var fragment = document.createDocumentFragment();
-for (var i = 0; i < wizards.length; i++) {
-  fragment.appendChild(renderWizard(wizards[i]));
-}
-similarListElement.appendChild(fragment);
+var createWizardList = function(){
+  var fragment = document.createDocumentFragment();
+  for (var i = 0; i < wizards.length; i++) {
+    fragment.appendChild(createWizard(wizards[i]));
+  }
+  similarListElement.appendChild(fragment);
+};
 
-userDialog.querySelector('.setup-similar').classList.remove('hidden');
+createWizardList();
+
+wizardOptionsDialog.querySelector('.setup-similar').classList.remove('hidden');
