@@ -2,7 +2,7 @@
 
 var WIZARD_COUNT = 4;
 
-var NAME_LIST = [
+var NAMES = [
   'Иван',
   'Хуан',
   'Себастьян',
@@ -14,7 +14,7 @@ var NAME_LIST = [
   'Вашингтон'
 ];
 
-var SURNAME_LIST = [
+var SURNAMES = [
   'да Марья',
   'Верон',
   'Мирабелла',
@@ -25,7 +25,7 @@ var SURNAME_LIST = [
   'Ирвинг'
 ];
 
-var COLOR_LIST = [
+var COLORS = [
   'rgb(101, 137, 164)',
   'rgb(241, 43, 107)',
   'rgb(146, 100, 161)',
@@ -34,7 +34,7 @@ var COLOR_LIST = [
   'rgb(0, 0, 0)'
 ];
 
-var EYES_COLOR_LIST = [
+var EYES_COLORS = [
   'black',
   'red',
   'blue',
@@ -42,17 +42,14 @@ var EYES_COLOR_LIST = [
   'green'
 ];
 
-var wizardOptionsDialog = document.querySelector('.setup');
-wizardOptionsDialog.classList.remove('hidden');
+var NAMES_MAX_INDEX = NAMES.length - 1;
+var SURNAMES_MAX_INDEX = SURNAMES.length - 1;
+var COLORS_MAX_INDEX = COLORS.length - 1;
+var EYES_COLORS_MAX_INDEX = EYES_COLORS.length - 1;
 
 var randomInteger = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
-
-var NameListMaxIndex = NAME_LIST.length - 1;
-var SurnameListMaxIndex = SURNAME_LIST.length - 1;
-var ColorListMaxIndex = COLOR_LIST.length - 1;
-var EyeColorListMaxIndex = EYES_COLOR_LIST.length - 1;
 
 var createWizrdsArray = function () {
   var wizards = [];
@@ -60,23 +57,15 @@ var createWizrdsArray = function () {
 
   for (var i = 0; i < WIZARD_COUNT; i++) {
 
-    wizard.name = NAME_LIST[randomInteger(0, NameListMaxIndex)] + ' ' + SURNAME_LIST[randomInteger(0, SurnameListMaxIndex)];
-    wizard.coatColor = COLOR_LIST[randomInteger(0, ColorListMaxIndex)];
-    wizard.eyesColor = EYES_COLOR_LIST[randomInteger(0, EyeColorListMaxIndex)];
+    wizard.name = NAMES[randomInteger(0, NAMES_MAX_INDEX)] + ' ' + SURNAMES[randomInteger(0, SURNAMES_MAX_INDEX)];
+    wizard.coatColor = COLORS[randomInteger(0, COLORS_MAX_INDEX)];
+    wizard.eyesColor = EYES_COLORS[randomInteger(0, EYES_COLORS_MAX_INDEX)];
 
     wizards.push(wizard);
   }
 
   return (wizards);
 };
-
-var wizards = createWizrdsArray();
-
-var similarListElement = wizardOptionsDialog.querySelector('.setup-similar-list');
-
-var similarWizardTemplate = document.querySelector('#similar-wizard-template')
-  .content
-  .querySelector('.setup-similar-item');
 
 var createWizard = function (wizard) {
   var createdWizard = similarWizardTemplate.cloneNode(true);
@@ -95,6 +84,17 @@ var createWizardList = function(){
   }
   similarListElement.appendChild(fragment);
 };
+
+var wizardOptionsDialog = document.querySelector('.setup');
+wizardOptionsDialog.classList.remove('hidden');
+
+var wizards = createWizrdsArray();
+
+var similarListElement = wizardOptionsDialog.querySelector('.setup-similar-list');
+
+var similarWizardTemplate = document.querySelector('#similar-wizard-template')
+  .content
+  .querySelector('.setup-similar-item');
 
 createWizardList();
 
