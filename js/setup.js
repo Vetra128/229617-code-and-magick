@@ -46,9 +46,7 @@ var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
 
 var randomInteger = function (min, max) {
-  var rand = min - 0.5 + Math.random() * (max - min + 1);
-  rand = Math.round(rand);
-  return rand;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
 var createWizrdsArray = function () {
