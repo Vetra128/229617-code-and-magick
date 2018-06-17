@@ -56,12 +56,12 @@ var createWizrdsArray = function () {
   var wizard = {};
 
   for (var i = 0; i < WIZARD_COUNT; i++) {
-
     wizard.name = NAMES[randomInteger(0, NAMES_MAX_INDEX)] + ' ' + SURNAMES[randomInteger(0, SURNAMES_MAX_INDEX)];
     wizard.coatColor = COLORS[randomInteger(0, COLORS_MAX_INDEX)];
     wizard.eyesColor = EYES_COLORS[randomInteger(0, EYES_COLORS_MAX_INDEX)];
 
     wizards.push(wizard);
+    console.log(wizard, wizards);
   }
 
   return (wizards);
