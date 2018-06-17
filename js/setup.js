@@ -49,15 +49,20 @@ var randomInteger = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+var NameListMaxIndex = NAME_LIST.length - 1;
+var SurnameListMaxIndex = SURNAME_LIST.length - 1;
+var ColorListMaxIndex = COLOR_LIST.length - 1;
+var EyeColorListMaxIndex = EYES_COLOR_LIST.length - 1;
+
 var createWizrdsArray = function () {
   var wizards = [];
   var wizard = {};
 
   for (var i = 0; i < WIZARD_COUNT; i++) {
 
-    wizard.name = NAME_LIST[randomInteger(0, NAME_LIST.length - 1)] + ' ' + SURNAME_LIST[randomInteger(0, SURNAME_LIST.length - 1)];
-    wizard.coatColor = COLOR_LIST[randomInteger(0, COLOR_LIST.length - 1)];
-    wizard.eyesColor = EYES_COLOR_LIST[randomInteger(0, EYES_COLOR_LIST.length - 1)];
+    wizard.name = NAME_LIST[randomInteger(0, NameListMaxIndex)] + ' ' + SURNAME_LIST[randomInteger(0, SurnameListMaxIndex)];
+    wizard.coatColor = COLOR_LIST[randomInteger(0, ColorListMaxIndex)];
+    wizard.eyesColor = EYES_COLOR_LIST[randomInteger(0, EyeColorListMaxIndex)];
 
     wizards.push(wizard);
   }
