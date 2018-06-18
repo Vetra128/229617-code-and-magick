@@ -76,7 +76,7 @@ var createWizard = function (wizard) {
   return createdWizard;
 };
 
-var createWizardList = function(){
+var createWizardList = function () {
   var fragment = document.createDocumentFragment();
   for (var i = 0; i < wizards.length; i++) {
     fragment.appendChild(createWizard(wizards[i]));
